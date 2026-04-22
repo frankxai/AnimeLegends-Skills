@@ -1,0 +1,15 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^https://animelegends\\.ai" },
+    { "pattern": "^mailto:" },
+    { "pattern": "^http://localhost" }
+  ],
+  "replacementPatterns": [
+    { "pattern": "^./", "replacement": "{{BASEURL}}/" }
+  ],
+  "timeout": "10s",
+  "retryOn429": true,
+  "retryCount": 2,
+  "fallbackRetryDelay": "5s",
+  "aliveStatusCodes": [200, 206, 301, 302, 403, 999]
+}
