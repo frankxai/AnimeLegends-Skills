@@ -66,9 +66,11 @@ The structured steps this skill follows. Numbered list. Each step must be action
 **Why this output:** one sentence explaining the key decision(s) the skill made.
 
 ### Example 2: [descriptive name]
+
 ...
 
 ### Example 3: [descriptive name]
+
 ...
 
 ## Failure modes
