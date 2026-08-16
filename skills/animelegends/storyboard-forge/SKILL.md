@@ -25,7 +25,6 @@ interface StoryboardForgeInput {
 }
 ```
 
-
 Source of input: `ScriptManifest` from `script-forge`.
 
 ## Outputs
@@ -55,7 +54,6 @@ interface StoryboardManifest {
   timestamp: string;                    // ISO 8601
 }
 ```
-
 
 Where the output goes: passed to `gen-director` as input, logged to `grimoire-keeper`.
 
@@ -143,7 +141,6 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -198,7 +195,6 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
-
 **Why this output:** 3 beats → 3 shots (standard density). Shot 1: AKASHI close-up (authority tone). Shot 2: KAGE diagram (analytical tension). Shot 3: AKASHI wide (synthesis). Each image prompt follows 4-block structure. LoRA triggers injected for mascot consistency. Motion intent specified for video gen.
 
 ### Example 2: 45s Philosophy, 5 shots with B-roll (standard density)
@@ -221,7 +217,6 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
   }
 }
 ```
-
 
 **Output:**
 
@@ -303,7 +298,6 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
-
 **Why this output:** 5 beats → 5 shots. Shot 3 is B-roll (no mascot, philosophical symbols only). Each mascot shot includes LoRA triggers. 4-block prompt structure applied to all shots. Motion intent guides video generation. Emotional tone mapped: curiosity (MIRA) → tension (KAGE) → wonder (B-roll) → tension (KAGE) → synthesis (AKASHI).
 
 ### Example 3: 60s LegendsLabs, 8 shots (standard density)
@@ -329,7 +323,6 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
   }
 }
 ```
-
 
 **Output:**
 
@@ -450,7 +443,6 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
-
 **Why this output:** 8 beats → 8 shots (standard density). Shots 2,3,5,6,7 are diagrams (KAGE analytical beats). Shot 4 is B-roll (particle FX, no mascot). Shots 1,8 are mascot (AKASHI opens, KAGE closes). All prompts follow 4-block structure. LoRA triggers for mascot shots. Motion intent detailed for technical breakdown.
 
 ## Failure modes
@@ -497,7 +489,6 @@ This skill does not generate external content or invoke image/video models. It o
 - [ ] Grimoire log entry created with all required fields
 
 ## Changelog
-
 
 ### 0.1.0 — 2026-08-16
 

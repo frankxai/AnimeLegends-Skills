@@ -31,7 +31,6 @@ interface GenDirectorInput {
 }
 ```
 
-
 Source of input: `StoryboardManifest` from `storyboard-forge`.
 
 ## Outputs
@@ -65,7 +64,6 @@ interface GenerateManifest {
   timestamp: string;                        // ISO 8601
 }
 ```
-
 
 Where the output goes: passed to `remotion-composer` as input (if successful), logged to `grimoire-keeper`.
 
@@ -192,7 +190,6 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -204,7 +201,6 @@ For each shot in `storyboard_manifest.shots`:
   "remediation": "Ensure animelegends-gen MCP server is installed and running. Verify provider API keys (Flux, Kling, ElevenLabs) are configured in MCP settings."
 }
 ```
-
 
 **Why this output:** MCP server not found via `GetMcpTools`. Skill aborts immediately with clear error. No generation attempted. No artifact paths invented.
 
@@ -223,7 +219,6 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
-
 **Estimated cost:** $12.50 (5 shots × $2.50 avg per shot)
 
 **Output:**
@@ -239,7 +234,6 @@ For each shot in `storyboard_manifest.shots`:
   "remediation": "Provide cost_override field with higher threshold (e.g., cost_override: 15.00), or reduce video duration/shot count to lower cost."
 }
 ```
-
 
 **Why this output:** Estimated cost exceeds $5 default threshold. Skill blocks generation and returns cost breakdown. User must explicitly override to proceed.
 
@@ -292,7 +286,6 @@ For each shot in `storyboard_manifest.shots`:
   "cost_override": 10.00
 }
 ```
-
 
 **Output:**
 
@@ -356,7 +349,6 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
-
 **Why this output:** MCP available, providers configured. Cost estimate $8.92 < $10.00 override → proceed. 3 shots generated: shot 1 (quality 8.2, 0 retries), shot 2 (quality 7.5, 1 retry), shot 3 (quality 8.7, 0 retries). Artifact paths recorded. Total cost $8.92, total time 140s. Cost gate passed.
 
 ## Failure modes
@@ -412,7 +404,6 @@ This skill invokes external image, video, and voice generation models. Legal fil
 - [ ] No copyrighted character likenesses in generated images (legal firewall enforced by MCP)
 
 ## Changelog
-
 
 ### 0.1.0 — 2026-08-16
 

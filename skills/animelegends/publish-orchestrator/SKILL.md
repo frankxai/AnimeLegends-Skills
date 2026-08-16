@@ -37,7 +37,6 @@ interface PublishOrchestratorInput {
 }
 ```
 
-
 Source of input: `RemotionComposerOutput` from `remotion-composer`, with reference to `ScriptManifest` for caption text.
 
 ## Outputs
@@ -69,7 +68,6 @@ interface DistributeManifest {
   timestamp: string;                        // ISO 8601
 }
 ```
-
 
 Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifests/` directory for later handoff to publish systems. **NOT** sent to external platforms (as of 2026-08-16).
 
@@ -185,7 +183,6 @@ Manifest saved to: distribute/manifests/{distribute_id}.json
 Video archived to: distribute/videos/{distribute_id}.mp4"
 ```
 
-
 ## Worked examples
 
 ### Example 1: Prepare manifest (default, fail-closed)
@@ -209,7 +206,6 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
   "publish_mode": "prepare"
 }
 ```
-
 
 **Output:**
 
@@ -260,7 +256,6 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
 }
 ```
 
-
 **Why this output:** `publish_mode="prepare"` (default). Manifest prepared with platform-specific captions and hashtags. All platforms `status="prepared"`, `post_url=null`. Overall `status="prepared"`. Metrics null. Video NOT published to any platform. Manifest saved for future handoff.
 
 ### Example 2: Attempt execute mode (BLOCKED)
@@ -274,7 +269,6 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
   "publish_mode": "execute"
 }
 ```
-
 
 **Output:**
 
@@ -295,7 +289,6 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
 }
 ```
 
-
 **Why this output:** User attempted `publish_mode="execute"`. Skill is fail-closed: no live platform integrations. Abort immediately with clear error explaining studio status (0 live shorts) and remediation (wait for platform API deployment). Do NOT publish.
 
 ### Example 3: Prepare manifest for single platform subset
@@ -310,7 +303,6 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
   "platforms": ["youtube"]
 }
 ```
-
 
 **Output:**
 
@@ -336,7 +328,6 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
   "timestamp": "2026-08-16T10:40:00Z"
 }
 ```
-
 
 **Why this output:** User specified `platforms=["youtube"]` only. Manifest prepared for YouTube Shorts only, not TikTok/Instagram/X. Status "prepared", not published.
 
@@ -394,7 +385,6 @@ All content produced upstream (gen-director, remotion-composer) adheres to these
 - [ ] If `publish_mode="execute"` attempted, skill aborts with clear error (fail-closed behavior)
 
 ## Changelog
-
 
 ### 0.1.0 — 2026-08-16
 

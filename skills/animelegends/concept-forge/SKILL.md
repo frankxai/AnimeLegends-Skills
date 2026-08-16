@@ -26,7 +26,6 @@ interface ConceptForgeInput {
 }
 ```
 
-
 Source of input: `SignalManifest` from `signal-forge`, or direct user invocation with topic string.
 
 ## Outputs
@@ -63,7 +62,6 @@ interface ConceptManifest {
   timestamp: string;                    // ISO 8601
 }
 ```
-
 
 Where the output goes: passed to `script-forge` as input, logged to `grimoire-keeper`.
 
@@ -128,7 +126,6 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -162,7 +159,6 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
-
 **Why this output:** Philosophy topic → DualitySymbolism archetype. 45s for mid-depth analysis. MIRA opens (Philosophy channel), KAGE measures, AKASHI closes. Question Hook chosen for philosophical intrigue. 5-beat structure for 45s.
 
 ### Example 2: PowerScaling topic, 30s duration
@@ -175,7 +171,6 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
   "duration_override": 30
 }
 ```
-
 
 **Output:**
 
@@ -209,7 +204,6 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
-
 **Why this output:** PowerScaling topic → AbilityCounters archetype. 30s override respected. AKASHI opens (expertise assertion) and closes (verdict). Contradiction Hook chosen (challenges common belief). 3-beat structure for quick comparison.
 
 ### Example 3: LegendsLabs topic, 60s duration
@@ -222,7 +216,6 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
   "hook_formula_override": "BTS"
 }
 ```
-
 
 **Output:**
 
@@ -255,7 +248,6 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
   "timestamp": "2026-08-16T09:40:00Z"
 }
 ```
-
 
 **Why this output:** LegendsLabs production topic → ProductionInnovation archetype. 60s for deep technical breakdown. AKASHI opens (expertise), KAGE measures and closes (technical rigor). BTS Hook override respected. 8-beat structure for 60s detailed analysis.
 
@@ -299,7 +291,6 @@ This skill does not generate external content or invoke image/video models. Lega
 - [ ] Grimoire log entry created with all required fields
 
 ## Changelog
-
 
 ### 0.1.0 — 2026-08-16
 

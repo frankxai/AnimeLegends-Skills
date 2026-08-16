@@ -26,7 +26,6 @@ interface SignalForgeInput {
 }
 ```
 
-
 Source of input: user prompt via `/from-signal` command, or automatic ingest from configured Reddit/AniList monitors (if configured).
 
 ## Outputs
@@ -54,7 +53,6 @@ interface SignalManifest {
   timestamp: string;                    // ISO 8601
 }
 ```
-
 
 Where the output goes: passed to `concept-forge` as input, logged to `grimoire-keeper`, saved to `signals/` directory if configured.
 
@@ -105,7 +103,6 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -130,7 +127,6 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
-
 **Why this output:** High brand-fit (philosophy keyword), strong engagement, recent post. Legal firewall stripped "Gojo" (copyrighted Jujutsu Kaisen character). Philosophy channel assigned → Mira leads trinity.
 
 ### Example 2: Manual topic (deferred)
@@ -143,7 +139,6 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
   "topic": "Best animation studios ranked by sakuga quality"
 }
 ```
-
 
 **Output:**
 
@@ -168,7 +163,6 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
-
 **Why this output:** Manual topics default to mid-range engagement/controversy/recency. Brand-fit moderate (sakuga/animation match). Weighted total 52.5 → defer status (40-59 range). LegendsLabs channel → Akashi leads.
 
 ### Example 3: Stale low-engagement topic (rejected)
@@ -181,7 +175,6 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
   "url": "https://anilist.co/anime/12345/discussions/old-minor-character-discussion"
 }
 ```
-
 
 **Output:**
 
@@ -206,7 +199,6 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
   "timestamp": "2026-08-16T09:25:00Z"
 }
 ```
-
 
 **Why this output:** Topic is >96h old (recency score 5), low engagement (15), weak brand-fit. Weighted total 14.75 < 40 → reject. Not queued for downstream processing.
 
@@ -273,7 +265,6 @@ The following are AnimeLegends original characters and are NEVER filtered:
 - [ ] No copyrighted character names in `topic_clean` unless `override_legal=true`
 
 ## Changelog
-
 
 ### 0.1.0 — 2026-08-16
 

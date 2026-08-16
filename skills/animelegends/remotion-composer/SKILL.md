@@ -27,7 +27,6 @@ interface RemotionComposerInput {
 }
 ```
 
-
 Source of input: `GenerateManifest` from `gen-director`, with references to `ScriptManifest` and `StoryboardManifest` for timing and metadata.
 
 ## Outputs
@@ -52,7 +51,6 @@ interface RemotionComposerOutput {
   timestamp: string;                        // ISO 8601
 }
 ```
-
 
 Where the output goes: passed to `publish-orchestrator` as input (if publishing), logged to `grimoire-keeper`, saved to `renders/` directory.
 
@@ -145,7 +143,6 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -167,7 +164,6 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
-
 **Why this output:** PowerScaling template selected. 1080p@30fps (Day 1-30 default). 3 shots composited: intro (2s) + 30s content + outro (3s) = 35s total. Render time 120s (4× real-time, typical for Remotion h264 slow preset). File size 18.7 MB (~0.53 MB/s bitrate).
 
 ### Example 2: 45s Philosophy video, 4K render (Day 31+)
@@ -186,7 +182,6 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
   "output_resolution": "4K"
 }
 ```
-
 
 **Output:**
 
@@ -208,7 +203,6 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
   "timestamp": "2026-09-16T14:00:00Z"
 }
 ```
-
 
 **Why this output:** Philosophy template selected. 4K@60fps (Day 31+ or explicit override). 5 shots composited: intro (2s) + 45s content + outro (3s) = 50s total. Render time 310s (~6× real-time for 4K 60fps). File size 67.3 MB (~1.35 MB/s bitrate, higher for 4K).
 
@@ -232,7 +226,6 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -244,7 +237,6 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
   "remediation": "Re-run gen-director to regenerate missing shot 2 artifacts."
 }
 ```
-
 
 **Why this output:** Shot 2 video file missing. Asset loading step failed. Render aborted. Error logged to Grimoire with specific missing file path.
 
@@ -301,7 +293,6 @@ This skill does not generate new content or invoke external APIs. It only compos
 - [ ] Intro and outro sequences present (intro 0-2s, outro last 3s)
 
 ## Changelog
-
 
 ### 0.1.0 — 2026-08-16
 

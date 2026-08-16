@@ -31,7 +31,6 @@ interface GrimoireLogEntry {
 }
 ```
 
-
 What this skill expects for user queries:
 
 ```typescript
@@ -46,7 +45,6 @@ interface GrimoireQuery {
   limit?: number;                           // max results (default: 50)
 }
 ```
-
 
 Source of input: all pipeline skills (signal-forge, concept-forge, script-forge, storyboard-forge, gen-director, remotion-composer, publish-orchestrator) log to grimoire-keeper; user queries via `/grimoire-query` command.
 
@@ -64,7 +62,6 @@ interface GrimoireLogResult {
 }
 ```
 
-
 What this skill produces (for queries):
 
 ```typescript
@@ -76,7 +73,6 @@ interface GrimoireQueryResult {
   timestamp: string;                        // ISO 8601 UTC
 }
 ```
-
 
 ## Core logic / rules
 
@@ -114,10 +110,10 @@ When a pipeline skill calls `grimoire-keeper` to log an entry:
 4. **Append entry to substrate**:
    - **SIS substrate**: call `sis_append_entry(vault="grimoire", entry={log_id, stage, input_id, output_id, decision, rationale, cost_usd, duration_ms, metadata, timestamp, entry_hash, previous_hash})`.
    - **Local substrate**: append JSON line to `grimoire/log.json` (newline-delimited JSON format):
+
      ```json
      {"log_id":"...","stage":"...","decision":"...","entry_hash":"...","previous_hash":"...","timestamp":"..."}
      ```
-
 
 5. **Return result** — Populate `GrimoireLogResult` with `log_id`, `entry_hash`, `previous_hash`, `substrate`, `timestamp`.
 
@@ -163,6 +159,7 @@ Periodically (e.g., weekly), grimoire-keeper can be invoked to curate high-quali
    - These images are candidates for next LoRA training cycle (mascot character consistency improvement).
 
 3. **Export seed manifest** — Write JSON manifest to `training/seeds/{date}_top10pct.json`:
+
    ```json
    {
      "seed_id": "uuid",
@@ -174,7 +171,6 @@ Periodically (e.g., weekly), grimoire-keeper can be invoked to curate high-quali
    }
    ```
 
-
 4. **Handoff to training pipeline** — This manifest can be consumed by LoRA training scripts (outside this repo, in AnimeLegends studio monorepo).
 
 ### 5. **Counsel audit export (legal posture)**
@@ -182,10 +178,10 @@ Periodically (e.g., weekly), grimoire-keeper can be invoked to curate high-quali
 Grimoire supports tamper-evident audit export for legal counsel:
 
 1. **Full audit trail** — Export all log entries from substrate (SIS or local) as JSON:
+
    ```bash
    grimoire-keeper export --format=json --output=audit_{date}.json
    ```
-
 
 2. **Hash verification** — Recompute `entry_hash` and `previous_hash` for all entries to verify chain integrity. If any hash mismatch: flag as `TAMPER_DETECTED`.
 
@@ -222,7 +218,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -234,7 +229,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
   "timestamp": "2026-08-16T09:15:01Z"
 }
 ```
-
 
 **Why this output:** SIS MCP available. Entry logged to SIS `grimoire` vault. SHA256 hash computed. Previous hash is all-zeros (first entry). Log ID returned for reference.
 
@@ -255,7 +249,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
 }
 ```
 
-
 **Output:**
 
 ```json
@@ -267,7 +260,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
   "timestamp": "2026-08-16T10:15:01Z"
 }
 ```
-
 
 **Why this output:** SIS MCP not available. Grimoire-keeper falls back to local `grimoire/log.json`. Entry appended as newline-delimited JSON. SHA256 hash chains to previous entry hash. Substrate "local" indicates fallback mode.
 
@@ -286,7 +278,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
   "limit": 10
 }
 ```
-
 
 **Output:**
 
@@ -323,7 +314,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
 }
 ```
 
-
 **Why this output:** User queried for signal-forge "accept" decisions on 2026-08-16. Grimoire returned 2 matching entries (limit 10, found 2). Substrate "sis" (query executed via SIS MCP vault search).
 
 ### Example 4: Query stats
@@ -338,7 +328,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
   }
 }
 ```
-
 
 **Output:**
 
@@ -369,7 +358,6 @@ Grimoire supports tamper-evident audit export for legal counsel:
   "timestamp": "2026-08-16T11:05:00Z"
 }
 ```
-
 
 **Why this output:** User queried for stats on 2026-08-16. Grimoire computed: 15 total entries, breakdown by stage and decision, total cost $8.92 (from gen-director), average duration 187ms.
 
@@ -413,7 +401,6 @@ Grimoire-keeper does not generate external content. It only logs structured meta
 - [ ] Contradiction detection (SIS only) does not block logging (async operation)
 
 ## Changelog
-
 
 ### 0.1.0 — 2026-08-16
 
