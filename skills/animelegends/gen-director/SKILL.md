@@ -357,7 +357,7 @@ For each shot in `storyboard_manifest.shots`:
 
 - **No providers configured** — If `check_provider_status()` shows zero image/video/voice providers available, **ABORT** with error: `"gen-director BLOCKED: No generation providers configured. Check API keys."`. Log to Grimoire with `decision="error"`, `rationale="no_providers_configured"`. **Do NOT proceed**.
 
-- **Cost gate exceeded** — If estimated cost > `cost_override` (default $5.00), **BLOCK** with error: `"Cost gate exceeded: estimated $X.XX > threshold $Y.YY"`. Return cost breakdown. Log to Grimoire with decision="blocked" and rationale="cost_gate_exceeded". **Do NOT proceed** unless user provides `cost_override`.
+- **Cost gate exceeded** -- If estimated cost > `cost_override` (default $5.00), **BLOCK** with error: `"Cost gate exceeded: estimated $X.XX > threshold $Y.YY"`. Return cost breakdown. Log to Grimoire with decision="blocked" and rationale="cost_gate_exceeded". **Do NOT proceed** unless user provides cost_override.
 
 - **Quality gate failed after 3 retries** — If CLIP score < 7.0/10 after 3 retry attempts, **accept lower quality** (do not block entire batch), log warning to Grimoire with `rationale="quality_below_threshold_shot_N"`, proceed with generation for remaining shots.
 
