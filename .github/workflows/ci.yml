@@ -32,13 +32,6 @@ jobs:
             skills/**/*.md
             templates/*.md
             *.md
-          config: |
-            {
-              "line-length": false,
-              "no-inline-html": false,
-              "first-line-heading": false,
-              "no-duplicate-heading": false
-            }
 
   link-check:
     name: Markdown link check
