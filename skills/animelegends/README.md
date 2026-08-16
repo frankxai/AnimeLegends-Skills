@@ -27,6 +27,7 @@ animelegends/
 ## Skills overview
 
 Each skill is a self-contained contract that defines:
+
 - **Intent**: what the skill does in the pipeline
 - **Inputs/Outputs**: typed TypeScript interfaces
 - **Core logic**: numbered, actionable steps
@@ -58,6 +59,7 @@ These skills document the **intended pipeline** as designed in the AnimeLegends 
 ## Original IP only
 
 All skills enforce the AnimeLegends copyright policy:
+
 - **Original mascots**: AKASHI, KAGE, MIRA (AnimeLegends IP)
 - **No copyrighted characters**: signal-forge legal firewall strips franchise character names (Naruto, Goku, Luffy, etc.)
 - **No studio style imitation**: No Ghibli, Trigger, Ufotable, Mappa style prompts

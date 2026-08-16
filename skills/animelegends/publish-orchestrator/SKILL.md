@@ -14,6 +14,7 @@ when_to_use: |
 Seventh and final stage of the AnimeLegends generative pipeline. Receives final rendered MP4 from `remotion-composer`, prepares platform-specific captions and hashtags (TikTok Business, YouTube Shorts, Instagram Reels, X vertical video), schedules posting times per platform's optimal engagement windows, and **prepares a `DistributeManifest`** for handoff to external publish systems when they become available.
 
 **CRITICAL CONSTRAINT**: This skill is **FAIL-CLOSED**. As of 2026-08-16, AnimeLegends has **0 live shorts published** and **NO live social platform API integrations**. This skill:
+
 - **DOES NOT** publish to TikTok, YouTube, Instagram, X, or Discord.
 - **DOES NOT** open browser automations or post via unofficial APIs.
 - **DOES NOT** send to influencer networks or buy domains.
@@ -83,6 +84,7 @@ Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifes
 - **Subscribe page**: <https://www.animelegends.ai/subscribe> is 404 (not live).
 
 **If `publish_mode="execute"`**:
+
 - **ABORT immediately** with error: `"publish-orchestrator BLOCKED: No live social platform integrations configured. AnimeLegends has 0 published shorts as of 2026-08-16. This skill prepares distribution manifests only. Set publish_mode='prepare' to continue."`
 - Log to `grimoire-keeper` with `stage="publish-orchestrator"`, `decision="blocked"`, `rationale="no_live_platforms"`.
 - **Do NOT** attempt to publish to TikTok, YouTube, Instagram, X, or Discord.
@@ -90,6 +92,7 @@ Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifes
 - **Return error to user** with clear explanation and future roadmap.
 
 **If `publish_mode="prepare"` (default)**:
+
 - Proceed to manifest preparation steps below.
 - Set all platform `status="prepared"` (not "published").
 - Set overall manifest `status="prepared"`.
@@ -97,9 +100,11 @@ Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifes
 
 ### 1. **Platform-specific caption generation**
 
+
 For each target platform in `platforms` array (default: ["tiktok", "youtube", "instagram", "x"]), generate optimized caption:
 
 #### TikTok caption rules
+
 - **Length**: 150 chars max (TikTok truncates longer captions)
 - **Structure**: Hook line + topic rephrased + CTA + hashtags
 - **Hashtags**: 3-5 tags (e.g., #PowerScaling #AnimeAnalysis #AnimeTikTok)
@@ -107,6 +112,7 @@ For each target platform in `platforms` array (default: ["tiktok", "youtube", "i
 - **Example**: "Everyone thinks speed wins—but they're missing something 💥⚡ Why raw power beats speed in anime battles. Follow for more! #PowerScaling #AnimeTheory #AnimeTikTok"
 
 #### YouTube Shorts caption rules
+
 - **Length**: 100 chars max (Shorts UI truncates aggressively)
 - **Structure**: Topic statement + CTA + hashtags
 - **Hashtags**: 2-3 tags (e.g., #Shorts #AnimeAnalysis)
@@ -114,6 +120,7 @@ For each target platform in `platforms` array (default: ["tiktok", "youtube", "i
 - **Example**: "Why speed doesn't beat power in anime 💥 Subscribe for analysis! #Shorts #AnimeAnalysis"
 
 #### Instagram Reels caption rules
+
 - **Length**: 125 chars visible before "more" (full 2200 chars supported but truncated)
 - **Structure**: Hook line + topic + CTA + hashtags
 - **Hashtags**: 5-8 tags (Instagram favors more tags than TikTok)
@@ -121,6 +128,7 @@ For each target platform in `platforms` array (default: ["tiktok", "youtube", "i
 - **Example**: "Speed vs Power: the battle everyone gets wrong ⚡💪 Why raw power dominates in anime. Follow for deep dives! #PowerScaling #AnimeAnalysis #AnimeReels #AnimeTheory #AnimeCommunity"
 
 #### X (Twitter) caption rules
+
 - **Length**: 280 chars max
 - **Structure**: Topic + insight tease + CTA + hashtags
 - **Hashtags**: 2-3 tags (X penalizes hashtag spam)
@@ -135,6 +143,7 @@ Generate hashtag sets per platform:
 - **YouTube**: Minimal hashtags (#Shorts, #Anime, #[Channel]) — YouTube favors watch time over hashtags
 - **Instagram**: Broad + niche + community tags (#AnimeReels, #AnimeCommunity, #AnimeLovers, #PowerScaling, #AnimeLegends)
 - **X**: Niche + trending tags (#AnimeAnalysis, #PowerScaling, #AnimeLegends)
+
 
 Pull trending hashtags from channel-specific lists (maintained in `brand/hashtags.json` if available, else use defaults above).
 
@@ -362,6 +371,7 @@ Every invocation of this skill logs via `grimoire-keeper`. Fields logged:
 This skill does not generate new content. It only prepares captions (text rewriting of existing sanitized topic) and metadata for distribution. Legal filtering was applied upstream in `signal-forge` (topic sanitization) and `script-forge` (dialogue sanitization). Captions reference only AnimeLegends original IP (channel names, mascots). No copyrighted character names or franchise references in captions.
 
 **Platform-specific content policies** (when platforms go live):
+
 - **TikTok**: no violence, no adult content, no copyrighted music (use AnimeLegends original soundtrack or licensed music)
 - **YouTube**: no strikes for copyright, no misleading metadata
 - **Instagram**: no spammy hashtags (max 30 tags), no impersonation

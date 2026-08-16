@@ -96,6 +96,7 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
    - Master output to -1dB peak
 
 7. **Remotion render** — Invoke Remotion CLI to render composition:
+
    ```bash
    npx remotion render [template] [output_path] \
      --props='{"artifacts": [...], "channel": "PowerScaling", ...}' \

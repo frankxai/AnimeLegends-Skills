@@ -71,8 +71,8 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
    - **Text**: on-screen text reveal (rare, for key quotes or definitions)
 
 3. **Brand style lock** — Define global style prefix applied to all image prompts:
-   ```
 
+   ```text
    "Anime art style, cinematic lighting, high detail, AnimeLegends brand aesthetic: dark gradient backgrounds with gold particle accents, sharp character outlines, depth of field"
    ```
 

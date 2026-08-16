@@ -230,6 +230,7 @@ This skill enforces strict copyright filtering on all external content.
 ### Copyrighted reference database
 
 Maintained in `brand/never-say.md` (not in this repo — see AnimeLegends studio monorepo). Database includes:
+
 - Character names from Shonen Jump franchises (Naruto, One Piece, Bleach, Jujutsu Kaisen, My Hero Academia, Dragon Ball, etc.)
 - Studio Ghibli, Trigger, Ufotable, Mappa character and series names
 - Franchise-specific terminology (e.g., "Sharingan", "Hollow", "Quirk", "Stand", "Bankai")
@@ -247,6 +248,7 @@ Manual topics can set `override_legal=true` to bypass substitution (e.g., for fa
 ### AnimeLegends original IP
 
 The following are AnimeLegends original characters and are NEVER filtered:
+
 - **AKASHI** — wisdom keeper, deep reverb voice
 - **KAGE** — shadow analyst, metallic clarity
 - **MIRA** — wonder guide, warm curious tone
