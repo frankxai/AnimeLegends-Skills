@@ -100,7 +100,6 @@ Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifes
 
 ### 1. **Platform-specific caption generation**
 
-
 For each target platform in `platforms` array (default: ["tiktok", "youtube", "instagram", "x"]), generate optimized caption:
 
 #### TikTok caption rules
@@ -143,7 +142,6 @@ Generate hashtag sets per platform:
 - **YouTube**: Minimal hashtags (#Shorts, #Anime, #[Channel]) — YouTube favors watch time over hashtags
 - **Instagram**: Broad + niche + community tags (#AnimeReels, #AnimeCommunity, #AnimeLovers, #PowerScaling, #AnimeLegends)
 - **X**: Niche + trending tags (#AnimeAnalysis, #PowerScaling, #AnimeLegends)
-
 
 Pull trending hashtags from channel-specific lists (maintained in `brand/hashtags.json` if available, else use defaults above).
 
