@@ -25,6 +25,7 @@ interface StoryboardForgeInput {
 }
 ```
 
+
 Source of input: `ScriptManifest` from `script-forge`.
 
 ## Outputs
@@ -55,6 +56,7 @@ interface StoryboardManifest {
 }
 ```
 
+
 Where the output goes: passed to `gen-director` as input, logged to `grimoire-keeper`.
 
 ## Core logic / rules
@@ -72,8 +74,10 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 
 3. **Brand style lock** — Define global style prefix applied to all image prompts:
    ```
+
    "Anime art style, cinematic lighting, high detail, AnimeLegends brand aesthetic: dark gradient backgrounds with gold particle accents, sharp character outlines, depth of field"
    ```
+
    This prefix ensures visual consistency across all shots and is prepended to every `image_prompt`.
 
 4. **4-block Archetype Prompt Structure** — Generate image prompts using this modular structure:
@@ -123,6 +127,7 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 ### Example 1: 30s PowerScaling, 3 shots (standard density)
 
 **Input:**
+
 ```json
 {
   "script_manifest": {
@@ -138,7 +143,9 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "storyboard_id": "aaaa1111-bbbb-2222-cccc-333344445555",
@@ -191,11 +198,13 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Why this output:** 3 beats → 3 shots (standard density). Shot 1: AKASHI close-up (authority tone). Shot 2: KAGE diagram (analytical tension). Shot 3: AKASHI wide (synthesis). Each image prompt follows 4-block structure. LoRA triggers injected for mascot consistency. Motion intent specified for video gen.
 
 ### Example 2: 45s Philosophy, 5 shots with B-roll (standard density)
 
 **Input:**
+
 ```json
 {
   "script_manifest": {
@@ -213,7 +222,9 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "storyboard_id": "bbbb2222-cccc-3333-dddd-444455556666",
@@ -292,11 +303,13 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Why this output:** 5 beats → 5 shots. Shot 3 is B-roll (no mascot, philosophical symbols only). Each mascot shot includes LoRA triggers. 4-block prompt structure applied to all shots. Motion intent guides video generation. Emotional tone mapped: curiosity (MIRA) → tension (KAGE) → wonder (B-roll) → tension (KAGE) → synthesis (AKASHI).
 
 ### Example 3: 60s LegendsLabs, 8 shots (standard density)
 
 **Input:**
+
 ```json
 {
   "script_manifest": {
@@ -317,7 +330,9 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "storyboard_id": "cccc3333-dddd-4444-eeee-555566667777",
@@ -435,6 +450,7 @@ Where the output goes: passed to `gen-director` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Why this output:** 8 beats → 8 shots (standard density). Shots 2,3,5,6,7 are diagrams (KAGE analytical beats). Shot 4 is B-roll (particle FX, no mascot). Shots 1,8 are mascot (AKASHI opens, KAGE closes). All prompts follow 4-block structure. LoRA triggers for mascot shots. Motion intent detailed for technical breakdown.
 
 ## Failure modes
@@ -482,7 +498,9 @@ This skill does not generate external content or invoke image/video models. It o
 
 ## Changelog
 
+
 ### 0.1.0 — 2026-08-16
+
 - Initial release
 - 4-block Archetype Prompt Structure (STYLE LOCK / SUBJECT / LIGHTING / COMPOSITION)
 - Brand style lock enforcement for visual consistency

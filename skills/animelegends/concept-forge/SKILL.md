@@ -26,6 +26,7 @@ interface ConceptForgeInput {
 }
 ```
 
+
 Source of input: `SignalManifest` from `signal-forge`, or direct user invocation with topic string.
 
 ## Outputs
@@ -62,6 +63,7 @@ interface ConceptManifest {
   timestamp: string;                    // ISO 8601
 }
 ```
+
 
 Where the output goes: passed to `script-forge` as input, logged to `grimoire-keeper`.
 
@@ -114,6 +116,7 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 ### Example 1: Philosophy topic, 45s duration
 
 **Input:**
+
 ```json
 {
   "signal_manifest": {
@@ -125,7 +128,9 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "concept_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -157,11 +162,13 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Why this output:** Philosophy topic → DualitySymbolism archetype. 45s for mid-depth analysis. MIRA opens (Philosophy channel), KAGE measures, AKASHI closes. Question Hook chosen for philosophical intrigue. 5-beat structure for 45s.
 
 ### Example 2: PowerScaling topic, 30s duration
 
 **Input:**
+
 ```json
 {
   "topic": "Why speed doesn't always beat raw power in battle",
@@ -169,7 +176,9 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "concept_id": "f7e6d5c4-b3a2-9180-7654-321098fedcba",
@@ -200,11 +209,13 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Why this output:** PowerScaling topic → AbilityCounters archetype. 30s override respected. AKASHI opens (expertise assertion) and closes (verdict). Contradiction Hook chosen (challenges common belief). 3-beat structure for quick comparison.
 
 ### Example 3: LegendsLabs topic, 60s duration
 
 **Input:**
+
 ```json
 {
   "topic": "How one studio perfected the sakuga slow-motion cut",
@@ -212,7 +223,9 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "concept_id": "9876fedc-ba09-8765-4321-0fedcba98765",
@@ -242,6 +255,7 @@ Where the output goes: passed to `script-forge` as input, logged to `grimoire-ke
   "timestamp": "2026-08-16T09:40:00Z"
 }
 ```
+
 
 **Why this output:** LegendsLabs production topic → ProductionInnovation archetype. 60s for deep technical breakdown. AKASHI opens (expertise), KAGE measures and closes (technical rigor). BTS Hook override respected. 8-beat structure for 60s detailed analysis.
 
@@ -286,7 +300,9 @@ This skill does not generate external content or invoke image/video models. Lega
 
 ## Changelog
 
+
 ### 0.1.0 — 2026-08-16
+
 - Initial release
 - Atlas taxonomy integration (47 archetypes across 4 categories)
 - Trinity mascot role assignment (opener/measurer/closer)

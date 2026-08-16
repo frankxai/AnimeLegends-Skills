@@ -31,6 +31,7 @@ interface GenDirectorInput {
 }
 ```
 
+
 Source of input: `StoryboardManifest` from `storyboard-forge`.
 
 ## Outputs
@@ -64,6 +65,7 @@ interface GenerateManifest {
   timestamp: string;                        // ISO 8601
 }
 ```
+
 
 Where the output goes: passed to `remotion-composer` as input (if successful), logged to `grimoire-keeper`.
 
@@ -111,21 +113,21 @@ Where the output goes: passed to `remotion-composer` as input (if successful), l
 
 For each shot in `storyboard_manifest.shots`, determine which models to use:
 
-#### Image generation fallback chain:
+#### Image generation fallback chain
 
 1. **Flux dev + LoRA** (preferred for mascot shots with `lora_triggers`): fast, LoRA-compatible, $0.10/image. Use for `shot_type="mascot"`.
 2. **Flux 1.1 Pro Ultra** (fallback if Flux dev fails or no LoRA needed): highest quality, $0.50/image. Use for complex compositions.
 3. **Ideogram v3** (fallback if Flux unavailable): good typography, $0.25/image.
 4. **Wan 2.2** (final fallback): cheapest, $0.05/image, lower quality.
 
-#### Video generation fallback chain:
+#### Video generation fallback chain
 
 1. **Kling 2.5** (preferred): best motion quality, 1080p@60fps, $3.00/5s. Use for cinematic shots.
 2. **Kling 2.0** (fallback): slightly lower quality, $2.00/5s.
 3. **Runway Gen-4 Turbo** (fallback): fast, $1.50/5s, shorter max duration (4s).
 4. **Wan 2.2** (final fallback): cheapest, $0.50/5s, lower motion quality.
 
-#### Voice synthesis routing:
+#### Voice synthesis routing
 
 - **AKASHI**: ElevenLabs "deep_reverb" voice preset, 2.0 wps, +8dB bass boost
 - **KAGE**: ElevenLabs "metallic_clear" voice preset, 2.8 wps, +2dB treble boost
@@ -178,6 +180,7 @@ For each shot in `storyboard_manifest.shots`:
 ### Example 1: MCP unavailable (FAIL-CLOSED)
 
 **Input:**
+
 ```json
 {
   "storyboard_manifest": {
@@ -189,7 +192,9 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "error": "gen-director BLOCKED: animelegends-gen MCP server not available. Cannot proceed with generation. Check MCP configuration and provider credentials.",
@@ -200,11 +205,13 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
+
 **Why this output:** MCP server not found via `GetMcpTools`. Skill aborts immediately with clear error. No generation attempted. No artifact paths invented.
 
 ### Example 2: Cost gate exceeded (BLOCKED)
 
 **Input:**
+
 ```json
 {
   "storyboard_manifest": {
@@ -216,9 +223,11 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
+
 **Estimated cost:** $12.50 (5 shots × $2.50 avg per shot)
 
 **Output:**
+
 ```json
 {
   "error": "Cost gate exceeded: estimated $12.50 > threshold $5.00. Set cost_override to proceed, or reduce shot count/duration.",
@@ -231,11 +240,13 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
+
 **Why this output:** Estimated cost exceeds $5 default threshold. Skill blocks generation and returns cost breakdown. User must explicitly override to proceed.
 
 ### Example 3: Successful generation (MCP available, cost gate passed)
 
 **Input:**
+
 ```json
 {
   "storyboard_manifest": {
@@ -282,7 +293,9 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "generate_id": "dddd4444-eeee-5555-ffff-666677778888",
@@ -343,6 +356,7 @@ For each shot in `storyboard_manifest.shots`:
 }
 ```
 
+
 **Why this output:** MCP available, providers configured. Cost estimate $8.92 < $10.00 override → proceed. 3 shots generated: shot 1 (quality 8.2, 0 retries), shot 2 (quality 7.5, 1 retry), shot 3 (quality 8.7, 0 retries). Artifact paths recorded. Total cost $8.92, total time 140s. Cost gate passed.
 
 ## Failure modes
@@ -399,7 +413,9 @@ This skill invokes external image, video, and voice generation models. Legal fil
 
 ## Changelog
 
+
 ### 0.1.0 — 2026-08-16
+
 - Initial release
 - MCP availability check (fail-closed if unavailable)
 - Provider status check (fail-closed if no providers configured)

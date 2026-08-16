@@ -27,6 +27,7 @@ interface RemotionComposerInput {
 }
 ```
 
+
 Source of input: `GenerateManifest` from `gen-director`, with references to `ScriptManifest` and `StoryboardManifest` for timing and metadata.
 
 ## Outputs
@@ -51,6 +52,7 @@ interface RemotionComposerOutput {
   timestamp: string;                        // ISO 8601
 }
 ```
+
 
 Where the output goes: passed to `publish-orchestrator` as input (if publishing), logged to `grimoire-keeper`, saved to `renders/` directory.
 
@@ -105,6 +107,7 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
      --audio-codec=aac \
      --audio-bitrate=192k
    ```
+
    - CRF 18 for high quality (lower = higher quality, 18-23 range recommended)
    - Preset "slow" for better compression (acceptable for production)
    - Audio codec AAC at 192kbps (standard for social media)
@@ -124,6 +127,7 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 ### Example 1: 30s PowerScaling video, 1080p render
 
 **Input:**
+
 ```json
 {
   "generate_manifest": {
@@ -141,7 +145,9 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "render_id": "eeee5555-ffff-6666-aaaa-777788889999",
@@ -161,11 +167,13 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
+
 **Why this output:** PowerScaling template selected. 1080p@30fps (Day 1-30 default). 3 shots composited: intro (2s) + 30s content + outro (3s) = 35s total. Render time 120s (4× real-time, typical for Remotion h264 slow preset). File size 18.7 MB (~0.53 MB/s bitrate).
 
 ### Example 2: 45s Philosophy video, 4K render (Day 31+)
 
 **Input:**
+
 ```json
 {
   "generate_manifest": {
@@ -179,7 +187,9 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "render_id": "aaaa7777-bbbb-8888-cccc-999900001111",
@@ -199,11 +209,13 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
+
 **Why this output:** Philosophy template selected. 4K@60fps (Day 31+ or explicit override). 5 shots composited: intro (2s) + 45s content + outro (3s) = 50s total. Render time 310s (~6× real-time for 4K 60fps). File size 67.3 MB (~1.35 MB/s bitrate, higher for 4K).
 
 ### Example 3: Render failed (missing artifact)
 
 **Input:**
+
 ```json
 {
   "generate_manifest": {
@@ -220,7 +232,9 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "error": "Render failed: missing artifact /workspace/artifacts/gen/shot_002_MISSING.mp4 for shot 2",
@@ -230,6 +244,7 @@ Where the output goes: passed to `publish-orchestrator` as input (if publishing)
   "remediation": "Re-run gen-director to regenerate missing shot 2 artifacts."
 }
 ```
+
 
 **Why this output:** Shot 2 video file missing. Asset loading step failed. Render aborted. Error logged to Grimoire with specific missing file path.
 
@@ -287,7 +302,9 @@ This skill does not generate new content or invoke external APIs. It only compos
 
 ## Changelog
 
+
 ### 0.1.0 — 2026-08-16
+
 - Initial release
 - Five Remotion v4 templates (PowerScaling, Philosophy, LoreDrop, TrainingArc, LegendsLabs)
 - Resolution progression: 1080p@30fps (Day 1-30) → 4K@60fps (Day 31+)

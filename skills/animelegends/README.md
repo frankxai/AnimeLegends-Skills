@@ -4,7 +4,7 @@ The eight production skills that power the AnimeLegends.ai generative pipeline.
 
 ## Directory structure
 
-```
+```text
 animelegends/
 ├── signal-forge/         # Stage 1: Topic ingestion + scoring
 │   └── SKILL.md
@@ -53,7 +53,7 @@ These skills document the **intended pipeline** as designed in the AnimeLegends 
 - **No live social publishing**: TikTok, YouTube, Instagram, X APIs are not configured. publish-orchestrator prepares manifests only.
 - **No public Remotion render service**: remotion-composer expects local Remotion v4 + FFmpeg installation.
 - **No Discord bot**: No Discord integration for community engagement or video posting.
-- **Studio status**: 0 live shorts published, 5 scripted shorts exist in private monorepo but not deployed to https://www.animelegends.ai.
+- **Studio status**: 0 live shorts published, 5 scripted shorts exist in private monorepo but not deployed to <https://www.animelegends.ai>.
 
 ## Original IP only
 
@@ -74,6 +74,6 @@ Skills in this repo define the public contract. Implementations live in the [Ani
 
 ## Studio links
 
-- **Live studio**: https://www.animelegends.ai (0 live shorts as of 2026-08-16)
-- **Discovery page**: https://www.animelegends.ai/discovery (static content, no embedded shorts)
-- **Monorepo**: https://github.com/frankxai/AnimeLegends (private)
+- **Live studio**: <https://www.animelegends.ai> (0 live shorts as of 2026-08-16)
+- **Discovery page**: <https://www.animelegends.ai/discovery> (static content, no embedded shorts)
+- **Monorepo**: <https://github.com/frankxai/AnimeLegends> (private)

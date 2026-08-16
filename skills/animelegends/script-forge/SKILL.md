@@ -24,6 +24,7 @@ interface ScriptForgeInput {
 }
 ```
 
+
 Source of input: `ConceptManifest` from `concept-forge`.
 
 ## Outputs
@@ -53,6 +54,7 @@ interface ScriptManifest {
   timestamp: string;                    // ISO 8601
 }
 ```
+
 
 Where the output goes: passed to `storyboard-forge` as input, logged to `grimoire-keeper`.
 
@@ -99,6 +101,7 @@ Where the output goes: passed to `storyboard-forge` as input, logged to `grimoir
 ### Example 1: 30s PowerScaling script, 3-beat
 
 **Input:**
+
 ```json
 {
   "concept_manifest": {
@@ -114,7 +117,9 @@ Where the output goes: passed to `storyboard-forge` as input, logged to `grimoir
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "script_id": "abc12345-6789-def0-1234-56789abcdef0",
@@ -159,11 +164,13 @@ Where the output goes: passed to `storyboard-forge` as input, logged to `grimoir
 }
 ```
 
+
 **Why this output:** 3-beat template for 30s. AKASHI opens (10s, 2.0 wps = ~20 words) and closes (7s, 2.0 wps = ~14 words). KAGE measures (13s, 2.5 wps = ~32 words). Hook and payoff integrated. Total 62 words ≈ 2.07 wps average.
 
 ### Example 2: 45s Philosophy script, 5-beat
 
 **Input:**
+
 ```json
 {
   "concept_manifest": {
@@ -179,7 +186,9 @@ Where the output goes: passed to `storyboard-forge` as input, logged to `grimoir
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "script_id": "def67890-abcd-1234-ef56-7890abcdef12",
@@ -242,11 +251,13 @@ Where the output goes: passed to `storyboard-forge` as input, logged to `grimoir
 }
 ```
 
+
 **Why this output:** 5-beat template for 45s. MIRA opens and handles beat 3 (exploration). KAGE measures (beats 2 and 4, analytical dissection). AKASHI closes with synthesis. Hook and payoff integrated in mascot voices. Total 95 words ≈ 2.11 wps average.
 
 ### Example 3: 60s LegendsLabs script, 8-beat
 
 **Input:**
+
 ```json
 {
   "concept_manifest": {
@@ -262,7 +273,9 @@ Where the output goes: passed to `storyboard-forge` as input, logged to `grimoir
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "script_id": "fedcba98-7654-3210-fedc-ba9876543210",
@@ -352,6 +365,7 @@ Where the output goes: passed to `storyboard-forge` as input, logged to `grimoir
 }
 ```
 
+
 **Why this output:** 8-beat template for 60s deep dive. AKASHI opens (7s, authority). KAGE dominates (beats 2,3,5,6,7,8—technical dissection, closer role). MIRA interjects (beat 4, humanizing particle detail). Total 140 words ≈ 2.33 wps average. Hook and payoff integrated.
 
 ## Failure modes
@@ -398,7 +412,9 @@ This skill does not generate external content or invoke image/video models. Lega
 
 ## Changelog
 
+
 ### 0.1.0 — 2026-08-16
+
 - Initial release
 - Strict mascot voice profiles (AKASHI 2.0wps, KAGE 2.5-3.0wps, MIRA 2.0-2.5wps)
 - Beat templates: 3-beat (30s), 5-beat (45s), 8-beat (60s)

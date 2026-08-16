@@ -26,6 +26,7 @@ interface SignalForgeInput {
 }
 ```
 
+
 Source of input: user prompt via `/from-signal` command, or automatic ingest from configured Reddit/AniList monitors (if configured).
 
 ## Outputs
@@ -53,6 +54,7 @@ interface SignalManifest {
   timestamp: string;                    // ISO 8601
 }
 ```
+
 
 Where the output goes: passed to `concept-forge` as input, logged to `grimoire-keeper`, saved to `signals/` directory if configured.
 
@@ -95,6 +97,7 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 ### Example 1: Reddit trending topic (accepted)
 
 **Input:**
+
 ```json
 {
   "source": "url",
@@ -102,7 +105,9 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "signal_id": "550e8400-e29b-41d4-a716-446655440000",
@@ -125,11 +130,13 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
+
 **Why this output:** High brand-fit (philosophy keyword), strong engagement, recent post. Legal firewall stripped "Gojo" (copyrighted Jujutsu Kaisen character). Philosophy channel assigned → Mira leads trinity.
 
 ### Example 2: Manual topic (deferred)
 
 **Input:**
+
 ```json
 {
   "source": "manual",
@@ -137,7 +144,9 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "signal_id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
@@ -159,11 +168,13 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
+
 **Why this output:** Manual topics default to mid-range engagement/controversy/recency. Brand-fit moderate (sakuga/animation match). Weighted total 52.5 → defer status (40-59 range). LegendsLabs channel → Akashi leads.
 
 ### Example 3: Stale low-engagement topic (rejected)
 
 **Input:**
+
 ```json
 {
   "source": "url",
@@ -171,7 +182,9 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "signal_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -193,6 +206,7 @@ Where the output goes: passed to `concept-forge` as input, logged to `grimoire-k
   "timestamp": "2026-08-16T09:25:00Z"
 }
 ```
+
 
 **Why this output:** Topic is >96h old (recency score 5), low engagement (15), weak brand-fit. Weighted total 14.75 < 40 → reject. Not queued for downstream processing.
 
@@ -260,7 +274,9 @@ The following are AnimeLegends original characters and are NEVER filtered:
 
 ## Changelog
 
+
 ### 0.1.0 — 2026-08-16
+
 - Initial release
 - 4-axis scoring rubric (engagement 35%, brand-fit 30%, controversy 20%, recency 15%)
 - Legal firewall with copyrighted reference stripping

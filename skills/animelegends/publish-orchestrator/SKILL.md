@@ -37,6 +37,7 @@ interface PublishOrchestratorInput {
 }
 ```
 
+
 Source of input: `RemotionComposerOutput` from `remotion-composer`, with reference to `ScriptManifest` for caption text.
 
 ## Outputs
@@ -69,6 +70,7 @@ interface DistributeManifest {
 }
 ```
 
+
 Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifests/` directory for later handoff to publish systems. **NOT** sent to external platforms (as of 2026-08-16).
 
 ## Core logic / rules
@@ -79,8 +81,8 @@ Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifes
 
 - **As of 2026-08-16**: TikTok Business API, YouTube Data API v3, Instagram Graph API, X API v2 are **NOT configured** for AnimeLegends.
 - **Studio status**: 0 live shorts published. 5 scripted shorts exist in private repo but not deployed.
-- **Discovery page**: https://www.animelegends.ai/discovery is live with static content, but NO embedded shorts.
-- **Subscribe page**: https://www.animelegends.ai/subscribe is 404 (not live).
+- **Discovery page**: <https://www.animelegends.ai/discovery> is live with static content, but NO embedded shorts.
+- **Subscribe page**: <https://www.animelegends.ai/subscribe> is 404 (not live).
 
 **If `publish_mode="execute"`**:
 - **ABORT immediately** with error: `"publish-orchestrator BLOCKED: No live social platform integrations configured. AnimeLegends has 0 published shorts as of 2026-08-16. This skill prepares distribution manifests only. Set publish_mode='prepare' to continue."`
@@ -99,28 +101,28 @@ Where the output goes: logged to `grimoire-keeper`, saved to `distribute/manifes
 
 For each target platform in `platforms` array (default: ["tiktok", "youtube", "instagram", "x"]), generate optimized caption:
 
-#### TikTok caption rules:
+#### TikTok caption rules
 - **Length**: 150 chars max (TikTok truncates longer captions)
 - **Structure**: Hook line + topic rephrased + CTA + hashtags
 - **Hashtags**: 3-5 tags (e.g., #PowerScaling #AnimeAnalysis #AnimeTikTok)
 - **Emojis**: 2-3 channel-appropriate emojis
 - **Example**: "Everyone thinks speed wins—but they're missing something 💥⚡ Why raw power beats speed in anime battles. Follow for more! #PowerScaling #AnimeTheory #AnimeTikTok"
 
-#### YouTube Shorts caption rules:
+#### YouTube Shorts caption rules
 - **Length**: 100 chars max (Shorts UI truncates aggressively)
 - **Structure**: Topic statement + CTA + hashtags
 - **Hashtags**: 2-3 tags (e.g., #Shorts #AnimeAnalysis)
 - **Emojis**: 1-2 (more subtle than TikTok)
 - **Example**: "Why speed doesn't beat power in anime 💥 Subscribe for analysis! #Shorts #AnimeAnalysis"
 
-#### Instagram Reels caption rules:
+#### Instagram Reels caption rules
 - **Length**: 125 chars visible before "more" (full 2200 chars supported but truncated)
 - **Structure**: Hook line + topic + CTA + hashtags
 - **Hashtags**: 5-8 tags (Instagram favors more tags than TikTok)
 - **Emojis**: 2-4 (Instagram audience expects more visual flair)
 - **Example**: "Speed vs Power: the battle everyone gets wrong ⚡💪 Why raw power dominates in anime. Follow for deep dives! #PowerScaling #AnimeAnalysis #AnimeReels #AnimeTheory #AnimeCommunity"
 
-#### X (Twitter) caption rules:
+#### X (Twitter) caption rules
 - **Length**: 280 chars max
 - **Structure**: Topic + insight tease + CTA + hashtags
 - **Hashtags**: 2-3 tags (X penalizes hashtag spam)
@@ -174,7 +176,8 @@ If `scheduled_time` provided, use same time for all platforms (unless platform-s
 ### 7. **User notification**
 
 Return success message:
-```
+
+```text
 "Distribution manifest prepared: {distribute_id}. Status: PREPARED (not published).
 As of 2026-08-16, AnimeLegends has 0 live shorts. Platforms (TikTok, YouTube, Instagram, X) are NOT configured for live publishing.
 This manifest is ready for handoff to publish systems when platform integrations are deployed.
@@ -182,11 +185,13 @@ Manifest saved to: distribute/manifests/{distribute_id}.json
 Video archived to: distribute/videos/{distribute_id}.mp4"
 ```
 
+
 ## Worked examples
 
 ### Example 1: Prepare manifest (default, fail-closed)
 
 **Input:**
+
 ```json
 {
   "remotion_output": {
@@ -205,7 +210,9 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "distribute_id": "ffff6666-aaaa-7777-bbbb-888899990000",
@@ -253,11 +260,13 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
 }
 ```
 
+
 **Why this output:** `publish_mode="prepare"` (default). Manifest prepared with platform-specific captions and hashtags. All platforms `status="prepared"`, `post_url=null`. Overall `status="prepared"`. Metrics null. Video NOT published to any platform. Manifest saved for future handoff.
 
 ### Example 2: Attempt execute mode (BLOCKED)
 
 **Input:**
+
 ```json
 {
   "remotion_output": { /* ... */ },
@@ -266,7 +275,9 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "error": "publish-orchestrator BLOCKED: No live social platform integrations configured. AnimeLegends has 0 published shorts as of 2026-08-16. This skill prepares distribution manifests only. Set publish_mode='prepare' to continue.",
@@ -284,11 +295,13 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
 }
 ```
 
+
 **Why this output:** User attempted `publish_mode="execute"`. Skill is fail-closed: no live platform integrations. Abort immediately with clear error explaining studio status (0 live shorts) and remediation (wait for platform API deployment). Do NOT publish.
 
 ### Example 3: Prepare manifest for single platform subset
 
 **Input:**
+
 ```json
 {
   "remotion_output": { /* ... */ },
@@ -298,7 +311,9 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
 }
 ```
 
+
 **Output:**
+
 ```json
 {
   "distribute_id": "gggg7777-bbbb-8888-cccc-999900001111",
@@ -321,6 +336,7 @@ Video archived to: distribute/videos/{distribute_id}.mp4"
   "timestamp": "2026-08-16T10:40:00Z"
 }
 ```
+
 
 **Why this output:** User specified `platforms=["youtube"]` only. Manifest prepared for YouTube Shorts only, not TikTok/Instagram/X. Status "prepared", not published.
 
@@ -379,7 +395,9 @@ All content produced upstream (gen-director, remotion-composer) adheres to these
 
 ## Changelog
 
+
 ### 0.1.0 — 2026-08-16
+
 - Initial release
 - **FAIL-CLOSED**: No live platform publishing until TikTok, YouTube, Instagram, X APIs deployed
 - Distribution manifest preparation for future handoff

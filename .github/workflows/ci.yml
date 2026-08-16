@@ -31,7 +31,15 @@ jobs:
           globs: |
             skills/**/*.md
             templates/*.md
-            *.md
+            !CATALOG.md
+            !CHANGELOG.md
+            !AGENTS.md
+            !README.md
+            !INSTALL.md
+            !LICENSE.md
+            !ECOSYSTEM.md
+            !CLAUDE.md
+            !CONTRIBUTING.md
 
   link-check:
     name: Markdown link check
