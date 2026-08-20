@@ -52,11 +52,13 @@ The structured steps this skill follows. Numbered list. Each step must be action
 ### Example 1: [descriptive name]
 
 **Input:**
+
 ```json
 { ... }
 ```
 
 **Output:**
+
 ```json
 { ... }
 ```
@@ -64,9 +66,11 @@ The structured steps this skill follows. Numbered list. Each step must be action
 **Why this output:** one sentence explaining the key decision(s) the skill made.
 
 ### Example 2: [descriptive name]
+
 ...
 
 ### Example 3: [descriptive name]
+
 ...
 
 ## Failure modes
@@ -111,4 +115,5 @@ What must be true for this skill's output to be considered valid. Checklist form
 ## Changelog
 
 ### 0.1.0 — YYYY-MM-DD
+
 - Initial release
