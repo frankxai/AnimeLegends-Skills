@@ -4,6 +4,12 @@
 
 Fork them. Run your own studio. Contribute back.
 
+```sh
+npx skills add frankxai/AnimeLegends-Skills
+```
+
+Pack contract: [`SKILLPACK.md`](./SKILLPACK.md). Not `awesome-anime-agent-skills`.
+
 ---
 
 ## What this is

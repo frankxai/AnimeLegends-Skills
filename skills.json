@@ -1,0 +1,19 @@
+{
+  "name": "animelegends",
+  "description": "AnimeLegends original-IP pipeline: signal, concept, script, storyboard, generate, assemble, publish, grimoire.",
+  "skills": [
+    {
+      "source": "frankxai/AnimeLegends-Skills",
+      "skills": [
+        "signal-forge",
+        "concept-forge",
+        "script-forge",
+        "storyboard-forge",
+        "gen-director",
+        "remotion-composer",
+        "publish-orchestrator",
+        "grimoire-keeper"
+      ]
+    }
+  ]
+}
