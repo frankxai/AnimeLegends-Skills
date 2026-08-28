@@ -1,6 +1,8 @@
 ---
 name: publish-orchestrator
-description: Prepares distribution manifest for social platforms (TikTok, YouTube, Instagram, X). Platform-specific captions + hashtags. Scheduled posting times. FAIL-CLOSED: does NOT publish (0 live platforms as of 2026-08-16). Manifest only.
+description: >-
+  Use when preparing an AnimeLegends distribution manifest for TikTok, YouTube,
+  Instagram, or X. Fail-closed: does not publish. Manifest only.
 type: core
 version: 0.1.0
 when_to_use: |
