@@ -13,7 +13,28 @@ when_to_use: |
 
 Fifth stage of the AnimeLegends generative pipeline. Receives shot-by-shot prompts and specifications from `storyboard-forge`, orchestrates all external model API calls via the `animelegends-gen` MCP server (image generation: Flux dev+LoRA → Flux 1.1 Pro Ultra → Ideogram v3 → Wan 2.2; video generation: Kling 2.5 → Kling 2.0 → Runway Gen-4 Turbo → Wan 2.2; voice synthesis: per-mascot voice routing + reverb profiles), applies CLIP quality gate at 7/10 threshold with max 3 retries per shot, enforces cost gate (blocks batches >$5 without explicit manifest override), and outputs a `GenerateManifest` with artifact file paths, quality scores, and cost breakdown for `remotion-composer` to assemble.
 
-**CRITICAL CONSTRAINT**: This skill is **fail-closed**. If the `animelegends-gen` MCP server is not available or provider API keys are missing, the skill **aborts immediately** with a detailed error explaining what is unavailable. It does **not** proceed with generation, does **not** invent successful outputs, and does **not** simulate artifact creation.
+**CRITICAL CONSTRAINT**: This skill is **fail-closed**. If no sanctioned image path is available, abort. Do **not** invent successful outputs or simulate artifact paths.
+
+### Estate native stills champion (evidence 2026-09-01, AL-BENCH-001)
+
+Canonical method is independent of CLI adapter. On this estate, measured stills for locked mascot identity:
+
+| Role | Adapter | Reported model |
+| --- | --- | --- |
+| **Champion stills** | Hermes `image_generate` | `grok-imagine-image-quality` (tool result, not config claim) |
+| Challenger stills | same prompt | `grok-imagine-image` (fast) — lost identity + robe-script on AKASHI bench |
+| Do not default | FAL / Flux / Kling | not run; estate no-FAL |
+| HOLD | Antigravity `generate_image` | login required; zero pixels ≠ FAL substitute |
+
+Prompt-structure evidence on identical AKASHI brief (9:16, sealed gate, no text):
+
+1. **Short luminous-lacquer prose** won identity (hood, ageless mask, galaxy eyes).
+2. **Camera-first structured** won full-body margin; failed young-mage face (known live-plate defect).
+3. **Character-sheet verbatim + 8k/cinematic/`[animelegends-v1]`** CUT: pretty-boy + rune landfill.
+4. **Parent-edit** of the identity winner recovered hair-to-boots. It did **not** clear door inscriptions. `"No text"` is insufficient for architecture — specify blank unornamented metal, no tablet panels, no cuneiform/kanji/runes.
+5. Save from **magic bytes** (xAI advertises PNG, bytes are JPEG).
+
+Do not promote a challenger until it beats champion on identity AND text-clean AND framing. Human KEEP remains the canon gate.
 
 ## Inputs
 
