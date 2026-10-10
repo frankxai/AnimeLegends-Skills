@@ -1,0 +1,43 @@
+{
+  "name": "@anime-legends/cli",
+  "version": "0.1.1",
+  "description": "Unified CLI cockpit and Model Context Protocol (MCP) server for autonomous anime production.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "anime-legends": "dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anime-legends/core": "^0.1.0",
+    "@anime-legends/storyboard": "^0.1.0",
+    "@anime-legends/media": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "anime-legends",
+    "mcp",
+    "cli",
+    "generative-anime",
+    "sakuga",
+    "agentic-workflow"
+  ],
+  "author": "Frank Riemer <frank@frankx.ai>"
+}

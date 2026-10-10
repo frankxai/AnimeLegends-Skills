@@ -1,0 +1,40 @@
+{
+  "name": "@anime-legends/media",
+  "version": "0.1.0",
+  "description": "Multi-engine prompt adapters and video render presets for Kling, Runway, Fal.ai Flux, and Luma.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anime-legends/core": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "anime-legends",
+    "kling",
+    "runway",
+    "fal-ai",
+    "flux-anime",
+    "luma",
+    "generative-video",
+    "prompt-adapter"
+  ],
+  "author": "Frank Riemer <frank@frankx.ai>"
+}
