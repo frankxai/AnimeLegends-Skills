@@ -1,0 +1,38 @@
+{
+  "name": "@anime-legends/storyboard",
+  "version": "0.1.0",
+  "description": "Screenplay-to-shot breakdown compiler and camera angle taxonomy for generative anime sequences.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anime-legends/core": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "anime-legends",
+    "storyboard",
+    "shot-list",
+    "screenplay-compiler",
+    "sakuga",
+    "cinematography"
+  ],
+  "author": "Frank Riemer <frank@frankx.ai>"
+}

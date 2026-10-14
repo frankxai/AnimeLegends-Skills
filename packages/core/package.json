@@ -1,0 +1,35 @@
+{
+  "name": "@anime-legends/core",
+  "version": "0.1.0",
+  "description": "Core character invariants, style tokens, and copyright legal firewall for autonomous anime production.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "anime-legends",
+    "generative-anime",
+    "sakuga",
+    "anime-pipeline",
+    "copyright-firewall",
+    "character-consistency"
+  ],
+  "author": "Frank Riemer <frank@frankx.ai>"
+}
